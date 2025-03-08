@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<title>Settings</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<section>
+
+		<div class="container">
+			<div class="row justify-content-center"> <!-- Center the row -->
+
+				<div class="col-md-6"> <!-- Set width for better layout -->
+					<div class="card mt-5">
+
+						<div class="card-body">
+							<h3 class="mb-3 text-center">Change Password</h3>
+
+							<!-- Display success or error message -->
+							<div th:if="${session.message != null}">
+								<div th:class="'alert alert-' + ${session.messageType}" role="alert">
+									<span th:text="${session.message}"></span>
+								</div>
+							</div>
+
+
+							<!-- Form to change password -->
+							<form th:action="@{/user/change-password}" method="post">
+
+								<!-- Old password field -->
+								<div class="form-group">
+									<label for="oldPassword">Old Password</label>
+									<input name="oldPassword" type="password" class="form-control"
+										placeholder="Enter old password" required>
+								</div>
+
+								<!-- New password field -->
+								<div class="form-group mt-3">
+									<label for="newPassword">New Password</label>
+									<input name="newPassword" type="password" class="form-control"
+										placeholder="Enter new password" required>
+								</div>
+
+								<!-- Submit and reset buttons -->
+								<div class="text-center mt-4">
+									<button type="submit" class="btn btn-success">Change Password</button>
+									<button type="reset" class="btn btn-danger">Reset</button>
+								</div>
+
+							</form>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+	<!-- Add Bootstrap JS and dependencies if needed -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
